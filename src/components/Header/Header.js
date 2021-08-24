@@ -25,7 +25,7 @@ function Header(props) {
                 <Nav.Link>Rout2</Nav.Link>
               </LinkContainer>
               <Button variant="outline-warning" className="login" target="_blank" >Login</Button>
-             <Button variant="outline-warning" target="_blank" >Join</Button>
+             <Button variant="outline-warning" className="join" target="_blank" >Join</Button>
             </Nav>
           </Navbar.Collapse>
         </Container>
