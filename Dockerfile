@@ -1,14 +1,11 @@
-FROM node:14.16.0-alpine3.13
+# Base Docker
+FROM node:alpine3.14 AS builder
 
-RUN addgroup app && adduser -S -G app app
-USER app
-
-WORKDIR /app
-COPY package*.json .
-RUN npm install
-ENV API_URL=http://api.tool.com
 COPY . .
 
-EXPOSE 3000
+RUN npm install
+RUN npm run build
 
-CMD ["npm", "start"]
+# Dashboard
+FROM alpine:latest AS dashboard
+WORKDIR /opt/toolstudio
