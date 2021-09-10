@@ -1,14 +1,11 @@
 version: '3.0'
 
 services:
-  debugger:
-    image: registry.gitlab.com/toolhub/debugger
-    ports:
-      - 9000:9000
-      - 9001:9001
-    environment:
-      - "TOOLSTUDIO_FUNC_NAME=toolhub/image-resize"
-      - "TOOLSTUDIO_FUNC_ENDPOINT=http://image-resize:4000/"
-      - "TOOLSTUDIO_FUNC_STATIC_ROOT=/var/www"
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
     volumes:
-      - ./test/tool:/var/www
+      - ./:/project
+    ports:
+      - 3000:3000
